@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Audio.Loader
@@ -31,7 +32,17 @@ namespace Audio.Loader
                 case 2:
                     StartConsole(args, _encoder);
                     break;
+                default: PrintUsage();
+                    break;
             }
+        }
+
+        private static void PrintUsage()
+        {
+            string codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            string name = Path.GetFileName(codeBase);
+
+            System.Console.WriteLine("Usage: {0} file.wma newfile.mp3 ", name);
         }
 
         private static void StartWindow()
@@ -48,7 +59,7 @@ namespace Audio.Loader
             var originalFileName = args[0];
 
             if (!File.Exists(originalFileName))
-                PrintErrorMessageAndExit("Source file doesn't exist");
+                PrintErrorMessageAndExit(string.Format("Source file {0} doesn't exist", originalFileName));
 
             var newFileName = args[1];
             if (!newFileName.EndsWith(".mp3"))

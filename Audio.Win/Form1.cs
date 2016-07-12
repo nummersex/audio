@@ -33,6 +33,10 @@ namespace Audio.Win
                 {
                     label1.Text = uaae.Message;
                 }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    label1.Text = "The input file has an unsupported file format";
+                }
             }
         }
 

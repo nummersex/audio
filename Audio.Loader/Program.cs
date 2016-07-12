@@ -29,6 +29,7 @@ namespace Audio.Loader
                 case 0:
                     StartWindow();
                     break;
+                case 1:
                 case 2:
                     StartConsole(args, _encoder);
                     break;
@@ -42,7 +43,7 @@ namespace Audio.Loader
             string codeBase = Assembly.GetExecutingAssembly().CodeBase;
             string name = Path.GetFileName(codeBase);
 
-            System.Console.WriteLine("Usage: {0} file.wma newfile.mp3 ", name);
+            System.Console.WriteLine("Usage: {0} file.wma [newfile.mp3]", name);
         }
 
         private static void StartWindow()
@@ -61,7 +62,8 @@ namespace Audio.Loader
             if (!File.Exists(originalFileName))
                 PrintErrorMessageAndExit(string.Format("Source file {0} doesn't exist", originalFileName));
 
-            var newFileName = args[1];
+            var newFileName = args.Count == 2 ? args[1] : originalFileName.Substring(0, originalFileName.LastIndexOf(".")) + ".mp3";
+
             if (!newFileName.EndsWith(".mp3"))
                 PrintErrorMessageAndExit("New filename must end with .mp3");
 

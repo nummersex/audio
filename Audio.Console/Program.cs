@@ -25,6 +25,12 @@ namespace Audio.Console
             catch (UnauthorizedAccessException uaae)
             {
                 System.Console.WriteLine(uaae.Message);
+                Environment.Exit(-1);
+            }
+            catch(System.Runtime.InteropServices.COMException)
+            {
+                System.Console.WriteLine("The input file has an unsupported file format");
+                Environment.Exit(-1);
             }
         }
     }

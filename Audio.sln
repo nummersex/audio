@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio", "Audio\Audio.csproj", "{2EB7640F-C9BE-4A4B-BA04-C0ED25132B44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio.Win", "Audio.Win\Audio.Win.csproj", "{9AD6FE9B-CA43-4146-B7A6-80AC9D5B0F6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio.Loader", "Audio.Loader\Audio.Loader.csproj", "{C42288FB-760F-42D0-921B-BF930ECE32D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{126D11A9-0294-4128-A583-BA70AE821F30}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio.Console", "Audio.Console\Audio.Console.csproj", "{9C0CD2C3-F6FB-44CE-A59A-65405CC62BEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EB7640F-C9BE-4A4B-BA04-C0ED25132B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB7640F-C9BE-4A4B-BA04-C0ED25132B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB7640F-C9BE-4A4B-BA04-C0ED25132B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB7640F-C9BE-4A4B-BA04-C0ED25132B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD6FE9B-CA43-4146-B7A6-80AC9D5B0F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD6FE9B-CA43-4146-B7A6-80AC9D5B0F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD6FE9B-CA43-4146-B7A6-80AC9D5B0F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD6FE9B-CA43-4146-B7A6-80AC9D5B0F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42288FB-760F-42D0-921B-BF930ECE32D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42288FB-760F-42D0-921B-BF930ECE32D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42288FB-760F-42D0-921B-BF930ECE32D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42288FB-760F-42D0-921B-BF930ECE32D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0CD2C3-F6FB-44CE-A59A-65405CC62BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0CD2C3-F6FB-44CE-A59A-65405CC62BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0CD2C3-F6FB-44CE-A59A-65405CC62BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0CD2C3-F6FB-44CE-A59A-65405CC62BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

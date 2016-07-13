@@ -27,7 +27,9 @@ namespace Audio.Loader
                 case 2:
                     _program = new Console.Program(args[Inputfile], args[Outputfile], _encoder);
                     break;
-                default: PrintUsage();
+                default:
+                    PrintUsage();
+                    Environment.Exit(-1);
                     break;
             }
 

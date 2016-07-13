@@ -8,6 +8,8 @@ namespace Audio.Loader
     {
         private static IEncoder _encoder;
         private static AudioProgram _program;
+        private const int Inputfile = 0;
+        private const int Outputfile = 1;
 
         [STAThread]
         public static void Main(string[] args)
@@ -20,10 +22,10 @@ namespace Audio.Loader
                     _program = new Win.Program(_encoder);
                     break;
                 case 1:
-                    _program = new Console.Program(args[0], _encoder);
+                    _program = new Console.Program(args[Inputfile], _encoder);
                     break;
                 case 2:
-                    _program = new Console.Program(args[0], args[1], _encoder);
+                    _program = new Console.Program(args[Inputfile], args[Outputfile], _encoder);
                     break;
                 default: PrintUsage();
                     break;

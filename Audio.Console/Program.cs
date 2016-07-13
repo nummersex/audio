@@ -2,24 +2,27 @@
 
 namespace Audio.Console
 {
-    public class Program : IAudioProgram
+    public class Program : AudioProgram
     {
-        private readonly IEncoder _encoder;
-        private readonly string _originalName;
-        private readonly string _newFileName;
-
-        public Program(string originalFileName, string newFileName, IEncoder encoder)
+        public Program(
+            string originalFileName,
+            string newFileName,
+            IEncoder encoder)
+            : base(
+                originalFileName,
+                newFileName,
+                encoder)
         {
-            _originalName = originalFileName;
-            _newFileName = newFileName;
-            _encoder = encoder;
+            OriginalFileName = originalFileName;
+            NewFileName = newFileName;
+            Encoder = encoder;
         }
 
-        public void Start()
+        public override void Start()
         {
             try
             {
-                _encoder.Encode(_originalName, _newFileName);
+                Encoder.Encode(OriginalFileName, NewFileName);
                 System.Console.WriteLine("Done");
             }
             catch (UnauthorizedAccessException uaae)
@@ -27,7 +30,7 @@ namespace Audio.Console
                 System.Console.WriteLine(uaae.Message);
                 Environment.Exit(-1);
             }
-            catch(System.Runtime.InteropServices.COMException)
+            catch (System.Runtime.InteropServices.COMException)
             {
                 System.Console.WriteLine("The input file has an unsupported file format");
                 Environment.Exit(-1);

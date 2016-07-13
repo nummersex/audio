@@ -51,7 +51,7 @@ namespace Audio.Loader
             // Hide
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
-            _winProgram = new Win.Program(string.Empty, string.Empty, _encoder);
+            _winProgram = new Win.Program(_encoder);
             _winProgram.Start();
         }
 

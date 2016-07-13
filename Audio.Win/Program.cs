@@ -2,27 +2,19 @@
 
 namespace Audio.Win
 {
-    public class Program : IAudioProgram
+    public class Program : AudioProgram
     {
-        private readonly string _originalFileName;
-        private readonly string _newFileName;
-        private readonly IEncoder _encoder;
-
-        public Program(
-            string originalFileName,
-            string newFileName,
-            IEncoder encoder)
+        public Program(IEncoder encoder)
+            : base(encoder)
         {
-            _originalFileName = originalFileName;
-            _newFileName = newFileName;
-            _encoder = encoder;
+            Encoder = encoder;
         }
 
-        public void Start()
+        public override void Start()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(_encoder));
+            Application.Run(new Form1(Encoder));
         }
     }
 }

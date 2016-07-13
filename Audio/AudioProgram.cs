@@ -2,6 +2,11 @@
 {
     public abstract class AudioProgram
     {
+        protected AudioProgram(IEncoder encoder)
+        {
+            Encoder = encoder;
+        }
+
         protected AudioProgram(string originalFileName,
             string newFileName,
             IEncoder encoder)

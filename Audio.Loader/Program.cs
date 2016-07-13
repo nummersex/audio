@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 namespace Audio.Loader
 {
     public class Program
     {
-        [DllImport("kernel32.dll")]
-        static extern IntPtr GetConsoleWindow();
-
-        [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        private const int SW_HIDE = 0;
         private static IEncoder _encoder;
-        private static Win.Program _winProgram;
-        private static Console.Program _consoleProgram;
+        private static AudioProgram _program;
 
         [STAThread]
         public static void Main(string[] args)
@@ -27,15 +17,19 @@ namespace Audio.Loader
             switch (args.Length)
             {
                 case 0:
-                    StartWindow();
+                    _program = new Win.Program(_encoder);
                     break;
                 case 1:
+                    _program = new Console.Program(args[0], _encoder);
+                    break;
                 case 2:
-                    StartConsole(args, _encoder);
+                    _program = new Console.Program(args[0], args[1], _encoder);
                     break;
                 default: PrintUsage();
                     break;
             }
+
+            _program.Start();
         }
 
         private static void PrintUsage()
@@ -44,39 +38,6 @@ namespace Audio.Loader
             string name = Path.GetFileName(codeBase);
 
             System.Console.WriteLine("Usage: {0} file.wma [newfile.mp3]", name);
-        }
-
-        private static void StartWindow()
-        {
-            // Hide
-            var handle = GetConsoleWindow();
-            ShowWindow(handle, SW_HIDE);
-            _winProgram = new Win.Program(_encoder);
-            _winProgram.Start();
-        }
-
-        private static void StartConsole(IReadOnlyList<string> args, IEncoder encoder)
-        {
-            var originalFileName = args[0];
-
-            if (!File.Exists(originalFileName))
-                PrintErrorMessageAndExit(string.Format("Source file {0} doesn't exist", originalFileName));
-
-            var newFileName = args.Count == 2 ? args[1] : originalFileName.Substring(0, originalFileName.LastIndexOf(".")) + ".mp3";
-
-            if (!newFileName.EndsWith(".mp3"))
-                PrintErrorMessageAndExit("New filename must end with .mp3");
-
-            _consoleProgram = new Console.Program(originalFileName, newFileName, _encoder);
-            _consoleProgram.Start();
-            
-            System.Console.WriteLine("Done");
-        }
-
-        private static void PrintErrorMessageAndExit(string message)
-        {
-            System.Console.WriteLine(message);
-            Environment.Exit(-1);
         }
     }
 }

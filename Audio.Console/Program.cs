@@ -18,9 +18,6 @@ namespace Audio.Console
                 string.Empty,
                 encoder)
         {
-            OriginalFileName = originalFileName;
-            NewFileName = string.Empty;
-            Encoder = encoder;
         }
 
         /// <summary>
@@ -38,9 +35,6 @@ namespace Audio.Console
                 newFileName,
                 encoder)
         {
-            OriginalFileName = originalFileName;
-            NewFileName = newFileName;
-            Encoder = encoder;
         }
 
         public override void Start()

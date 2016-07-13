@@ -7,7 +7,8 @@
             Encoder = encoder;
         }
 
-        protected AudioProgram(string originalFileName,
+        protected AudioProgram(
+            string originalFileName,
             string newFileName,
             IEncoder encoder)
         {

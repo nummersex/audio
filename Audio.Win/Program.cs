@@ -17,7 +17,6 @@ namespace Audio.Win
         public Program(IEncoder encoder)
             : base(encoder)
         {
-            Encoder = encoder;
         }
 
         public override void Start()

@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Encoder.cs" />
-    <Compile Include="IAudioProgram.cs" />
+    <Compile Include="AudioProgram.cs" />
     <Compile Include="IEncoder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
